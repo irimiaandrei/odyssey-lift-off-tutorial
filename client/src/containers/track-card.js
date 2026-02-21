@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { colors, mq } from '../styles';
 import { humanReadableTimeFromSeconds } from '../utils/helpers';
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client/react";
 
@@ -36,15 +36,16 @@ const TrackCard = ({ track }) => {
       variables: {incrementTrackViewsId: id},
       onCompleted: (data) => {
         console.log(data);
-      }
+      },
+      onError: (error) => console.log(error)
     }
   ); 
   
   return (
-    <CardContainer onClick={() => {  incrementTrackViews; console.log(id); ; navigate(`/track/${id}`)}}>
+    <CardContainer  onClick={() => {incrementTrackViews(); navigate(`/track/${id}`)}}>
       <CardContent>
         <CardImageContainer>
-          <CardImage src={thumbnail} alt={title} />
+          <CardImage src={thumbnail} alt={title}/>
         </CardImageContainer>
         <CardBody>
           <CardTitle>{title || ''}</CardTitle>
